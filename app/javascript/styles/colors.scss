@@ -1,0 +1,17 @@
+/* Colors */
+
+$brand-primary: #2584C5; // BS override
+$brand-primary-light: lighten($brand-primary, 10%);
+$brand-primary-faint: lighten($brand-primary, 50%);
+$text-color: #585858; // BS override
+$body-bg: #ffffff; // #F3F3F4; // BS override
+
+
+$brand-blue: $brand-primary;
+$brand-green: #72BF44;
+$brand-pink: #ED125F;
+$brand-yellow: #FAA61A;
+$brand-orange: #f37021;
+
+$brand-accent: $brand-pink;
+$brand-accent-light: lighten($brand-accent, 10%);
