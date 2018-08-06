@@ -26,6 +26,8 @@
 /public/assets
 .byebug_history
 
+.rbenv-gemsets
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /public/packs

@@ -23,6 +23,10 @@ Things you may want to cover:
 
 * ...
 
+rbenv
+rbenv-gemsets
 
-
+rbenv gemset init
+bundle
 grep `react_apollo_on_rails_starter` and `ReactApolloOnRailsStarter` and replace with your app name
+set `ENV['ROLLBAR_ACCESS_TOKEN']` (sign up for Rollbar first)

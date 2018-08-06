@@ -18,6 +18,13 @@ gem 'graphql', '~> 1.8'
 gem 'graphql-errors'
 gem 'graphql-batch'
 gem 'cacheql'
+gem "graphiql-rails"
+
+# ops
+gem 'rollbar'
+
+# background jobs
+gem 'sidekiq'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
