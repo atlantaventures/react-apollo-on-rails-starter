@@ -1,0 +1,19 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "import/prefer-default-export": "off",
+    "jsx-a11y/heading-has-content": "off",
+    "jsx-a11y/no-autofocus": "off",
+    "max-len": ["error", { "code": 120 }],
+    "no-underscore-dangle": "off",
+    "no-unused-vars": ["error", { "vars": "all", "args": "none", "ignoreRestSiblings": false }],
+    "react/no-danger": "off"
+  }
+}
