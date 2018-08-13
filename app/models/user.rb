@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, authentication_keys: [:username]
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
+  validates :email, presence: false, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

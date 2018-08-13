@@ -1,5 +1,5 @@
 // libraries
-//import 'yourlibrary.css';
+// import 'yourlibrary.css';
 
 // custom
 import '../styles/application.scss';

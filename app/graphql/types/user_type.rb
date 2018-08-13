@@ -1,10 +1,11 @@
 class Types::UserType < Types::BaseObject
-  authorize_args = { policy: UserPolicy, record: ->(obj, args, ctx) { ctx[:current_user] } }
+  AUTHORIZE_ARGS = { policy: UserPolicy, record: ->(obj, args, ctx) { obj.object } }
 
-  description 'User'
+  description 'A User'
+
   field :id, ID, null: false
-  field(:firstName, String, null: true) { authorize(:personal_info, authorize_args) }
-  field(:lastName, String, null: true) { authorize(:personal_info, authorize_args) }
-  field(:email, String, null: true) { authorize(:personal_info, authorize_args) }
-  field :username, String, null: false
+  field :username, String, null: false, description: "Used for login"
+  field(:first_name, String, null: true) { authorize(:personal_info, AUTHORIZE_ARGS) }
+  field(:last_name, String, null: true)  { authorize(:personal_info, AUTHORIZE_ARGS) }
+  field(:email, String, null: true)      { authorize(:personal_info, AUTHORIZE_ARGS) }
 end

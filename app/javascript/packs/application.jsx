@@ -2,33 +2,40 @@
 // like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
 // of the page.
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
+import React from 'react';
+import ReactDOM from 'react-dom';
+// import PropTypes from 'prop-types';
 
-import { ApolloProvider } from 'react-apollo'
-import { ApolloClient } from 'apollo-client'
-import { createHttpLink } from 'apollo-link-http'
-import { InMemoryCache } from 'apollo-cache-inmemory'
-import { setContext } from 'apollo-link-context'
+import { ApolloProvider } from 'react-apollo';
+import { ApolloClient } from 'apollo-client';
+import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { setContext } from 'apollo-link-context';
+import { BrowserRouter } from 'react-router-dom';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
   credentials: 'same-origin',
-})
+});
 
 const client = new ApolloClient({
   link: httpLink,
-  cache: new InMemoryCache()
-})
+  cache: new InMemoryCache(),
+});
 
 const ReactApolloOnRailsStarter = props => (
-  <div>ReactApolloOnRailsStarter {props.name}!</div>
-)
+  <ApolloProvider client={client}>
+    <BrowserRouter>
+      <div>
+        ReactApolloOnRailsStarter!
+      </div>
+    </BrowserRouter>
+  </ApolloProvider>
+);
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <ReactApolloOnRailsStarter name="React" />,
     document.body.appendChild(document.createElement('div')),
-  )
-})
+  );
+});
