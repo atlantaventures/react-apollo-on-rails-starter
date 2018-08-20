@@ -21,4 +21,11 @@ class Types::QueryType < Types::BaseObject
   def current_user
     context[:current_user]
   end
+
+  field :communication_methods, [Types::CommunicationMethodType], null: true, description: "Communication methods from system to user" do
+    argument(:channel, Types::CommunicationMethodCategory, "channel type", required: false)
+  end
+  def communication_methods(channel: nil)
+    channel ? CommunicationMethod.where(channel: CommunicationMethod.channels[channel.downcase]) : CommunicationMethod.all
+  end
 end
