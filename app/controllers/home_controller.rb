@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
-  #before_action :require_user
+  before_action :authenticate_user!
+  layout 'home'
 
   def show
     respond_to do |f|
@@ -7,12 +8,5 @@ class HomeController < ApplicationController
       f.js   { render head: :ok }
       f.all  { render formats: ['html'] }
     end
-  end
-
-  private
-
-  def require_user
-    #user = authenticate
-    #redirect_to login_path and return unless user
   end
 end

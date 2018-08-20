@@ -7,6 +7,7 @@ class GraphqlController < ApplicationController
     operation_name = params[:operationName]
     context = {
       current_user: current_user,
+      controller: self
     }
     result = ReactApolloOnRailsStarterSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result

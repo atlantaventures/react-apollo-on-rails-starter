@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "antd": "^3.8.1",
     "apollo-boost": "^0.1.12",
     "apollo-link-context": "^1.0.8",
     "babel-loader": "^7.1.5",

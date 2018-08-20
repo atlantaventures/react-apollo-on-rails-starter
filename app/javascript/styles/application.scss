@@ -4,3 +4,14 @@
 body, html {
   //background: #fff;
 }
+
+// ant design layout
+.menu-logo {
+  height: 32px;
+  background: rgba(255,255,255,.2);
+  margin: 16px;
+}
+
+.menu-active {
+  color: #fff !important;
+}

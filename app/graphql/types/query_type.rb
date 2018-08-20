@@ -17,4 +17,8 @@ class Types::QueryType < Types::BaseObject
     User.find(id)
   end
 
+  field :current_user, Types::UserType, null: true, description: "The current logged in user"
+  def current_user
+    context[:current_user]
+  end
 end

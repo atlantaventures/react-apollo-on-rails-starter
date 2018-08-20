@@ -13,22 +13,31 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { setContext } from 'apollo-link-context';
 import { BrowserRouter } from 'react-router-dom';
 
+import ApplicationContainer from '../ApplicationContainer';
+
 const httpLink = createHttpLink({
   uri: '/graphql',
   credentials: 'same-origin',
 });
 
+const authLink = setContext((_, { headers }) => (
+  {
+    headers: {
+      ...headers,
+      'X-CSRF-TOKEN': document.getElementsByName('csrf-token')[0].getAttribute('content'),
+    },
+  }
+));
+
 const client = new ApolloClient({
-  link: httpLink,
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
 const ReactApolloOnRailsStarter = props => (
   <ApolloProvider client={client}>
     <BrowserRouter>
-      <div>
-        ReactApolloOnRailsStarter!
-      </div>
+      <ApplicationContainer />
     </BrowserRouter>
   </ApolloProvider>
 );
