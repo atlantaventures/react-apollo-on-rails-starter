@@ -10,17 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_20_154259) do
+ActiveRecord::Schema.define(version: 2018_08_21_153500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "communication_channels", force: :cascade do |t|
+    t.integer "category", default: 0, null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "communication_methods", force: :cascade do |t|
-    t.integer "channel", null: false
     t.string "name", null: false
     t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "communication_channel_id"
+    t.index ["communication_channel_id"], name: "index_communication_methods_on_communication_channel_id"
+  end
+
+  create_table "communication_preferences", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "communication_method_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["communication_method_id"], name: "index_communication_preferences_on_communication_method_id"
+    t.index ["user_id"], name: "index_communication_preferences_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

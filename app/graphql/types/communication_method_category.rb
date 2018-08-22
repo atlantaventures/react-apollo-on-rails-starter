@@ -1,5 +1,5 @@
 class Types::CommunicationMethodCategory < Types::BaseEnum
-  value "EMAIL", "electronic mail"
-  value "CALL", "phone call"
-  value "SMS", "text message"
+  value "EMAIL", "electronic mail", value: :email
+  value "CALL", "phone call", value: :call
+  value "SMS", "text message", value: :sms
 end

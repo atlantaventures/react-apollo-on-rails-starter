@@ -22,10 +22,12 @@ class Types::QueryType < Types::BaseObject
     context[:current_user]
   end
 
-  field :communication_methods, [Types::CommunicationMethodType], null: true, description: "Communication methods from system to user" do
-    argument(:channel, Types::CommunicationMethodCategory, "channel type", required: false)
+  field :communication_methods, [Types::CommunicationMethodType], null: true, description: "Communication methods from system to user"
+  def communication_methods
+    CommunicationMethod.all
   end
-  def communication_methods(channel: nil)
-    channel ? CommunicationMethod.where(channel: CommunicationMethod.channels[channel.downcase]) : CommunicationMethod.all
-  end
+  #
+  # field :communication_preferences, [Types::CommunicationPreferenceType], null: true, description: "Opt-in status of communication methods" do
+  #   authorize!(:index, policy: CommunicationPreferencePolicy)
+  # end
 end

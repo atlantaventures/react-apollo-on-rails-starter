@@ -19,7 +19,7 @@ const WrappedUserSettingsForm = Form.create({
       firstName: Form.createFormField({ value: props.firstName }),
       lastName: Form.createFormField({ value: props.lastName }),
       emailOpt: Form.createFormField({ value: props.emailOpt }),
-      emailSelections: Form.createFormField({ value: props.emailSelections }),
+      communicationMethodIds: Form.createFormField({ value: props.selectedCommunicationMethods }),
       phone: Form.createFormField({ value: props.phone }),
       email: Form.createFormField({ value: props.email }),
     };
@@ -43,12 +43,9 @@ const WrappedUserSettingsForm = Form.create({
   const buttonItemLayout = {
     wrapperCol: { span: 14, offset: 4 },
   };
-  const emailOptions = [
-    { label: 'Weekly Reports', value: 'weekly' },
-    { label: 'Promotions', value: 'promotions' },
-    { label: 'New Features', value: 'new_features' },
-  ];
-  const optedInToEmail = props.form.getFieldValue('emailOpt') === 'email_yes';
+  const communicationOptions = props.availableCommunicationMethods.map(commMethod => (
+    { label: commMethod.name, value: commMethod.id }
+  ));
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -95,56 +92,20 @@ const WrappedUserSettingsForm = Form.create({
         )}
       </Form.Item>
       <h3>Privacy</h3>
-      <Form.Item label="Email Preferences" {...formItemLayout}>
+      <Form.Item label="Communication Preferences" {...formItemLayout}>
         <Alert
           description="Your privacy is very important to us. Please review our privacy policy <link>"
           type="info"
           showIcon
         />
-        <Collapse bordered={false} activeKey={optedInToEmail ? '1' : null}>
-          <Collapse.Panel
-            showArrow={false}
-            header={
-              getFieldDecorator('emailOpt')(
-                <Radio.Group {...loadingFields}>
-                  <Radio.Button value="email_yes">
-                    {
-                      optedInToEmail && (
-                        <React.Fragment>
-                          <Icon type="like-o" />
-                          &nbsp;
-                        </React.Fragment>
-                      )
-                    }
-                    I want to receive email
-                  </Radio.Button>
-                  <Radio.Button value="email_no">
-                    {
-                      !optedInToEmail && (
-                        <React.Fragment>
-                          <Icon type="dislike-o" />
-                          &nbsp;
-                        </React.Fragment>
-                      )
-                    }
-                    Do not send me any email
-                  </Radio.Button>
-                </Radio.Group>
-              )
-            }
-            style={{ border: 0 }}
-            key="1"
-          >
-            {
-              getFieldDecorator('emailSelections', {})(
-                <Checkbox.Group
-                  options={emailOptions}
-                  disabled={props.loading || !optedInToEmail}
-                />
-              )
-            }
-          </Collapse.Panel>
-        </Collapse>
+        {
+          getFieldDecorator('communicationMethodIds', {})(
+            <Checkbox.Group
+              options={communicationOptions}
+              disabled={props.loading}
+            />
+          )
+        }
       </Form.Item>
       <Form.Item label="Account Deletion" {...formItemLayout}>
         <Button type="ghost" disabled={props.loading}>

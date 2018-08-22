@@ -9,6 +9,11 @@ const UserActions = {
         firstName
         lastName
         email
+        communicationMethods {
+          id
+          name
+          description
+        }
       }
     }
   `,
@@ -20,6 +25,7 @@ const UserActions = {
       $lastName: String,
       $username: String,
       $password: String,
+      $communicationMethodIds: [ID!],
     ) {
       updateUser(
         userId: $userId,
@@ -28,6 +34,7 @@ const UserActions = {
         lastName: $lastName,
         username: $username,
         password: $password,
+        communicationMethodIds: $communicationMethodIds,
       ) {
         user {
           id
@@ -35,6 +42,9 @@ const UserActions = {
           firstName
           lastName
           username
+          communicationMethods {
+            id
+          }
         }
       }
     }
