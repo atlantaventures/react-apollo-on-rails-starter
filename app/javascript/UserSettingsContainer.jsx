@@ -3,9 +3,21 @@ import PropTypes from 'prop-types';
 import { graphql, Query } from 'react-apollo';
 import { message } from 'antd';
 
+import PageHeader from '@atlaskit/page-header';
+import { BreadcrumbsStateless, BreadcrumbsItem } from '@atlaskit/breadcrumbs';
+
 import UserActions from './actions/UserActions';
 import CommunicationPreferenceActions from './actions/CommunicationPreferenceActions';
 import UserSettingsForm from './UserSettingsForm';
+
+import LinkCrumb from './components/LinkCrumb';
+
+const breadcrumbs = (
+  <BreadcrumbsStateless onExpand={() => {}}>
+    <LinkCrumb to="/" text="Home" key="home" />
+    <LinkCrumb to="/my-settings" text="My Settings" key="settings" />
+  </BreadcrumbsStateless>
+);
 
 class UserSettingsContainer extends React.Component {
   handleFormSubmit = (values, callback) => {
@@ -14,7 +26,6 @@ class UserSettingsContainer extends React.Component {
         userId: this.props.currentUser.id,
         ...values,
       },
-      //refetchQueries: UserActions.getCurrentUser,
     }).then(() => {
       message.success('Profile updated');
     });
@@ -24,9 +35,16 @@ class UserSettingsContainer extends React.Component {
     const { currentUser } = this.props;
     return (
       <div>
+        <PageHeader
+          breadcrumbs={breadcrumbs}
+          actions={[]}
+          bottomBar={[]}
+        >
+          My Settings
+        </PageHeader>
         <Query query={CommunicationPreferenceActions.getAvailableCommunicationMethods}>
           {({ loading, error, data }) => {
-            if (loading) return "Loading...";
+            if (loading) return 'Loading...';
             if (error) return `Error! ${error.message}`;
             return (
               <UserSettingsForm
