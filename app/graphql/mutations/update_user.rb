@@ -8,7 +8,7 @@ class Mutations::UpdateUser < GraphQL::Schema::Mutation
   argument :communication_method_ids, [ID], required: false
 
   field :user, Types::UserType, null: true
-  field :errors, [String], null: false
+  field :errors, String, null: true  # as json
 
   def resolve(user_id:, **args)
     user = User.find(user_id)
@@ -17,13 +17,13 @@ class Mutations::UpdateUser < GraphQL::Schema::Mutation
       # Successful creation, return the created object with no errors
       {
         user: user,
-        errors: [],
+        errors: nil,
       }
     else
-      # Failed save, return the errors to the client
+      errors = user.errors.as_json(full_messages: true).to_json
       {
         user: nil,
-        errors: user.errors.full_messages
+        errors: errors
       }
     end
   end

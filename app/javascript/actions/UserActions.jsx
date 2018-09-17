@@ -36,6 +36,7 @@ const UserActions = {
         password: $password,
         communicationMethodIds: $communicationMethodIds,
       ) {
+        errors
         user {
           id
           email

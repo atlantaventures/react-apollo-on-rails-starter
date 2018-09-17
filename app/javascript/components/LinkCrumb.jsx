@@ -5,7 +5,9 @@ import { BreadcrumbsItem } from '@atlaskit/breadcrumbs';
 const LinkCrumb = ({ to, ...props }) => (
   <BreadcrumbsItem
     component={({ children, className }) => (
-      <Link to={to}>{children}</Link>
+      <button className={className} type="button">
+        <Link to={to}>{children}</Link>
+      </button>
     )}
     {...props}
   />

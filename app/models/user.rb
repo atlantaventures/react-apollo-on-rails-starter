@@ -24,6 +24,9 @@ class User < ApplicationRecord
     false
   end
 
+  def can_send?(communication_method_id)
+    communication_preferences.exists?(communication_method_id: communication_method_id)
+  end
 end
 
 # == Schema Information

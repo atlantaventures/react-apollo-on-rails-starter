@@ -13,8 +13,11 @@ import UserActions from './actions/UserActions';
 import GlobalAppNav from './components/navigation/GlobalAppNav';
 import homeView from './components/navigation/product/homeView';
 import issuesView from './components/navigation/product/issuesView';
+import settingsContainerView from './components/navigation/container/settingsContainerView';
 
 import UserSettingsContainer from './UserSettingsContainer';
+import DashboardContainer from './DashboardContainer';
+import WidgetsContainer from './WidgetsContainer';
 
 class App extends Component<{
   navigationViewController: ViewController,
@@ -23,7 +26,7 @@ class App extends Component<{
     const { navigationViewController } = this.props;
     navigationViewController.addView(homeView);
     navigationViewController.addView(issuesView);
-    navigationViewController.setView(homeView.id);
+    navigationViewController.addView(settingsContainerView);
   }
 
   render() {
@@ -36,11 +39,18 @@ class App extends Component<{
           return (
             <LayoutManagerWithViewController globalNavigation={GlobalAppNav}>
               <Page>
-                <Grid>
-                  <GridColumn medium={12} spacing="comfortable">
+                <Grid layout="fluid" spacing="comfortable">
+                  <GridColumn medium={1} />
+                  <GridColumn medium={10}>
                     <Switch>
+                      <Route path="/widgets">
+                        <WidgetsContainer />
+                      </Route>
                       <Route path="/my-settings">
                         <UserSettingsContainer currentUser={data.currentUser} />
+                      </Route>
+                      <Route path="/" exact>
+                        <DashboardContainer currentUser={data.currentUser} />
                       </Route>
                     </Switch>
                   </GridColumn>

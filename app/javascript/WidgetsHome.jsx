@@ -9,13 +9,13 @@ const primaryAction = (
     appearance="primary"
     onClick={() => console.log('primary action clicked')}
   >
-    Primary action
+    Create a Widget
   </Button>
 );
 
 const secondaryAction = (
   <Button onClick={() => console.log('secondary action clicked')}>
-    Secondary action
+    Take a Tour
   </Button>
 );
 
@@ -25,17 +25,14 @@ const tertiaryAction = (
     href="https://www.wikipedia.org/"
     target="_blank"
   >
-    Take the tour
+    Knowledge Base
   </Button>
 );
 
-const Dashboard = props => (
+const WidgetsHome = props => (
   <EmptyState
-    header="I am the header"
-    description="Lorem ipsum is a pseudo-Latin text used in web design,
-      typography, layout, and printing in place of English to emphasise
-      design elements over content. It's also called placeholder (or filler)
-      text. It's a convenient tool for mock-ups."
+    header="You have no widgets."
+    description="Create some widgets below, or check out the knowledge base for more information."
     imageUrl={exampleImage}
     primaryAction={primaryAction}
     secondaryAction={secondaryAction}
@@ -43,4 +40,4 @@ const Dashboard = props => (
   />
 );
 
-export default Dashboard;
+export default WidgetsHome;

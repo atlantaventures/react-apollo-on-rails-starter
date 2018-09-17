@@ -1,8 +1,8 @@
 import React from 'react';
 import DashboardIcon from '@atlaskit/icon/glyph/dashboard';
-import FolderIcon from '@atlaskit/icon/glyph/folder';
+import ShipIcon from '@atlaskit/icon/glyph/ship';
 import IssueIcon from '@atlaskit/icon/glyph/issue';
-import PreferencesIcon from '@atlaskit/icon/glyph/preferences';
+import SettingsIcon from '@atlaskit/icon/glyph/settings';
 
 import LinkItem from '../LinkItem';
 
@@ -35,10 +35,11 @@ const homeView = {
           to: '/',
         },
         {
-          type: 'Item',
-          id: 'projects',
-          before: FolderIcon,
-          text: 'Projects',
+          type: LinkItem,
+          id: 'widgets',
+          before: ShipIcon,
+          text: 'Widgets',
+          to: '/widgets',
         },
         {
           type: 'Item',
@@ -50,7 +51,7 @@ const homeView = {
         {
           type: LinkItem,
           id: 'settings',
-          before: PreferencesIcon,
+          before: SettingsIcon,
           text: 'Settings',
           to: '/my-settings',
         },

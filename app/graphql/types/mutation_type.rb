@@ -3,5 +3,9 @@ class Types::MutationType < Types::BaseObject
     authorize!(:update, Types::UserType::AUTHORIZE_ARGS)
   end
 
+  field :toggle_user_communication_method, mutation: Mutations::ToggleUserCommunicationMethod do
+    authorize!(:update, Types::UserType::AUTHORIZE_ARGS)
+  end
+
   field :sign_out_user, mutation: Mutations::SignOutUser
 end

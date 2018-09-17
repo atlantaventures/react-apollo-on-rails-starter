@@ -4,4 +4,5 @@ class Types::CommunicationMethodType < Types::BaseObject
   field :id, ID, null: false
   field :description, String, null: false
   field :name, String, null: false
+  field :communicationChannel, Types::CommunicationChannelType, null: false
 end

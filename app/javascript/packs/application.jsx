@@ -15,6 +15,9 @@ import { BrowserRouter } from 'react-router-dom';
 
 import ApplicationContainer from '../ApplicationContainer';
 
+import { ToastConsumer, ToastProvider } from 'react-toast-notifications';
+
+
 const httpLink = createHttpLink({
   uri: '/graphql',
   credentials: 'same-origin',
@@ -37,7 +40,9 @@ const client = new ApolloClient({
 const ReactApolloOnRailsStarter = props => (
   <ApolloProvider client={client}>
     <BrowserRouter>
-      <ApplicationContainer />
+      <ToastProvider>
+        <ApplicationContainer />
+      </ToastProvider>
     </BrowserRouter>
   </ApolloProvider>
 );

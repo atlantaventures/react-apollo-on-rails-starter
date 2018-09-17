@@ -7,6 +7,22 @@ const CommunicationPreferenceActions = {
         id
         name
         description
+        communicationChannel {
+          category
+          name
+        }
+      }
+    }
+  `,
+  toggleUserCommunicationMethod: gql`
+    mutation toggleUserCommunicationMethod($userId: ID!, $communicationMethodId: ID!) {
+      toggleUserCommunicationMethod(userId: $userId, communicationMethodId: $communicationMethodId) {
+        communicationMethod {
+          id
+          name
+        }
+        enabled
+        errors
       }
     }
   `,

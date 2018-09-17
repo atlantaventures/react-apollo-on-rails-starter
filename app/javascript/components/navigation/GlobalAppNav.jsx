@@ -8,6 +8,8 @@ import {
   UIControllerSubscriber,
 } from '@atlaskit/navigation-next';
 import { Link } from 'react-router-dom';
+import Dropdown, { DropdownItemGroup, DropdownItem } from '@atlaskit/dropdown-menu';
+
 
 import brandMark from '../../images/av_mark_white.png';
 
@@ -57,9 +59,15 @@ const globalNavSecondaryItems = [
     icon: UserAvatarCircleIcon,
     label: 'Profile',
     component: ({ className, children }: *) => (
-      <Link to="/my-settings">
-        {children}
-      </Link>
+      <Dropdown trigger={children} position="right bottom" triggerType="default">
+        <DropdownItemGroup title="User">
+          <DropdownItem>
+            <Link to="/my-settings">
+              My Settings
+            </Link>
+          </DropdownItem>
+        </DropdownItemGroup>
+      </Dropdown>
     ),
   },
 ];
