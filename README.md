@@ -1,10 +1,13 @@
 # README
 
 ## Base technology
-* [graphql-ruby](http://graphql-ruby.org/)
+* Rails
+  * [graphql-ruby](http://graphql-ruby.org/)
+  * Devise
+  * Rollbar
 * React
-* [Apollo](https://www.apollographql.com/docs/react/)
-* [Atlaskit](https://atlaskit.atlassian.com/)
+  * [Apollo](https://www.apollographql.com/docs/react/)
+  * [Atlaskit](https://atlaskit.atlassian.com/)
 
 ## GDPR
 * a [solid guide from HubSpot](https://www.hubspot.com/data-privacy/gdpr/product-readiness)
