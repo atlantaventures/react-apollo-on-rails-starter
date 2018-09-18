@@ -58,7 +58,7 @@ class UserSettingsContainerBase extends React.Component<{
                   <React.Fragment>
                     <PageHeader
                       breadcrumbs={(
-                        <BreadcrumbsStateless onExpand={() => {}}>
+                        <BreadcrumbsStateless>
                           <LinkCrumb to="/" text="Home" key="home" />
                           <LinkCrumb to="/my-settings/privacy" text="Settings - Privacy" key="settings-privacy" />
                         </BreadcrumbsStateless>
@@ -79,7 +79,7 @@ class UserSettingsContainerBase extends React.Component<{
                   <React.Fragment>
                     <PageHeader
                       breadcrumbs={(
-                        <BreadcrumbsStateless onExpand={() => {}}>
+                        <BreadcrumbsStateless>
                           <LinkCrumb to="/" text="Home" key="home" />
                           <LinkCrumb to="/my-settings/profile" text="Settings - Profile" key="settings-profile" />
                         </BreadcrumbsStateless>
