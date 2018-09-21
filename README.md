@@ -1,6 +1,8 @@
 # README
 
 ## General
+This project is an example of a SaaS app, using the following tech (and more):
+
 * Rails
   * [graphql-ruby](http://graphql-ruby.org/)
   * Devise
@@ -10,10 +12,10 @@
   * [Atlaskit](https://atlaskit.atlassian.com/)
 
 This project is intended to be used as a reference or starter app. In no way is it intended to have 100% functionality.
-___
+
 ## Why React/Apollo/Rails?
-Rails has been around since 2005, and now has a good spread of dependable gems and ecosystem. Ruby is an eloquent language that is easy to read and is fairly powerful out of the box. React fills some of the gaps that Rails has. GraphQL (via Apollo) is a flexible way to build an API to power a React front-end without having to define a bunch of routes.
-___
+Rails has been around since 2005, and now has a good spread of dependable gems and ecosystem. Ruby is an eloquent language that is easy to read and is fairly powerful out of the box. React fills some of the gaps that Rails has. GraphQL (via [Apollo](https://www.apollographql.com/docs/react/)) is a flexible way to build an API to power a React front-end without having to define a bunch of routes.
+
 ## Authentication
 Authentication is done through Devise - while it would be smoother UX to implement a solution on the SPA side, handling authentication before serving the SPA pack reduces complexity. There's also so many plugins for Devise that leveraging the existing ecosystem makes sense.
 
@@ -36,14 +38,14 @@ const authLink = setContext((_, { headers }) => (
   }
 ));
 ```
-___
+
 ## Navigation
 Using the [navigation-next](https://atlaskit.atlassian.com/packages/core/navigation-next) package, there's a 3-tier navigation: `Global`, `Product`, `Container`.
 
 * `Global` refers to the top-most (or left-most) nav bar, e.g. Search, User Menu, +Add Widget.
 * `Product` refers to general sections that would be in your app, e.g. Dashboards, Reports, Widgets. This menu can go away if there's a more specific container menu for a view.
 * `Container` refers to a navigation that is specific to one section, e.g. Square Widgets, Circle Widgets. This menu can take priority over the product menu if necessary.
-___
+
 ## GDPR
 * Wanted to build things with GDPR in mind
 * A [solid guide from HubSpot](https://www.hubspot.com/data-privacy/gdpr/product-readiness)
@@ -76,7 +78,7 @@ end
 ### GDPR-TODO
 * Add support for user account deletion (right to be forgotten)
 * Add privacy notice and detail what information is used for what
-___
+
 
 ## GraphQL
 Here's a sample query you can run outside of the application, inside of your local [GraphiQL](https://github.com/graphql/graphiql) (after logging in, go to http://localhost:3000/graphiql)
@@ -94,7 +96,7 @@ query {
   }
 }
 ```
-___
+
 ## YOU-DO
 * grep `react_apollo_on_rails_starter` and `ReactApolloOnRailsStarter` and replace with your app name, if you're using this as a starter.
 * set `ENV['ROLLBAR_ACCESS_TOKEN']` (sign up for Rollbar first)
