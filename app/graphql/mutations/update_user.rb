@@ -12,6 +12,7 @@ class Mutations::UpdateUser < GraphQL::Schema::Mutation
 
   def resolve(user_id:, **args)
     user = User.find(user_id)
+    UserPolicy.new(context[:current_user], user).update?
     update_args = args.slice(:first_name, :last_name, :email, :username, :password, :communication_method_ids)
     if user.update_attributes(update_args)
       # Successful creation, return the created object with no errors

@@ -8,6 +8,7 @@ class Mutations::ToggleUserCommunicationMethod < GraphQL::Schema::Mutation
 
   def resolve(user_id:, communication_method_id:)
     user = User.includes(:communication_methods).find(user_id)
+    UserPolicy.new(context[:current_user], user).update?
     communication_method = CommunicationMethod.find(communication_method_id)
 
     if user.communication_methods.exists?(communication_method_id)

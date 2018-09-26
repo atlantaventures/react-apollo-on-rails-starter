@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, authentication_keys: [:username]
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
-  validates :email, presence: false, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :email, presence: false, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, unless: Proc.new { |user| user.email.blank? }
 
   has_many :communication_preferences, dependent: :destroy
   accepts_nested_attributes_for :communication_preferences, allow_destroy: true

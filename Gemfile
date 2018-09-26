@@ -17,7 +17,6 @@ gem 'graphql-errors'
 gem 'graphql-batch'
 gem 'cacheql'
 gem "graphiql-rails"
-gem 'graphql-pundit', '~> 0.7.0'
 
 # ops
 gem 'rollbar'
